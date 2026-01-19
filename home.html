@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - HF-Furniture Collection</title>
+    <link rel="icon" type="image/png" href="pics/logo.webp">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap icon -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+
+<body class="bg-light">
+
+    <!-- Page Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <img src="pics/logo2.webp" alt="HF-Furniture" class="loader-logo">
+            <div class="spinner-border text-dark mt-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading collection...</p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top mx-2">
+        <div class="container-fluid px-5 py-2 bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="pics/logo.svg" alt="HF-Furniture" height="50">
+            </a>
+            <div class="d-flex align-items-center order-lg-last ms-3">
+                <div class="d-flex align-items-center order-lg-last ms-3">
+                    <button class="btn btn-link nav-link text-white position-relative text-decoration-none"
+                        onclick="Cart.show()" style="font-family: 'Playfair Display', serif;">
+                        <i class="bi bi-cart-fill"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge  bg-white cart-count"
+                            style="font-size: 0.6rem; color: black;">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav filters" id="filters">
+                    <li class="nav-item"><button class="nav-link btn btn-link active" data-filter="all">All</button>
+                    </li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="2 door">2 Door</button></li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="3 door">3 Door</button></li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="4 door">4 Door</button></li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="5 door">5 Door</button></li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="6 door">6 Door</button></li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="extras">Extras</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section p-0">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="5000" style="height: 100vh; min-height: 500px;">
+                    <img src="pics/hero-1.jpg" class="d-block w-100 h-100" alt="Modern Bedroom"
+                        style="object-fit: cover; filter: brightness(0.6);">
+                    <div
+                        class="carousel-caption d-flex flex-column h-100 align-items-center justify-content-center top-0 bottom-0">
+                        <h1 class="display-2 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Stylish,
+                            high-quality Bedroom Furniture</h1>
+                        <p class="lead mb-4 fs-3">Transform your bedroom with our elegant and durable furniture
+                            collection.</p>
+                        <a href="index.html" class="btn btn-light btn-lg px-5 py-3 fs-5 mt-3">Shop Now</a>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="5000" style="height: 100vh; min-height: 500px;">
+                    <img src="pics/hero-2.jpg" class="d-block w-100 h-100" alt="Luxury Suite"
+                        style="object-fit: cover; filter: brightness(0.6);">
+                    <div
+                        class="carousel-caption d-flex flex-column h-100 align-items-center justify-content-center top-0 bottom-0">
+                        <h1 class="display-2 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Crafted with
+                            Precision</h1>
+                        <p class="lead mb-4 fs-3">Experience the perfect blend of comfort and modern design.</p>
+                        <a href="index.html" class="btn btn-light btn-lg px-5 py-3 fs-5 mt-3">View Collection</a>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="5000" style="height: 100vh; min-height: 500px;">
+                    <img src="pics/hero-3.jpg" class="d-block w-100 h-100" alt="Elegant Design"
+                        style="object-fit: cover; filter: brightness(0.6);">
+                    <div
+                        class="carousel-caption d-flex flex-column h-100 align-items-center justify-content-center top-0 bottom-0">
+                        <h1 class="display-2 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Delivered
+                            Across the UK</h1>
+                        <p class="lead mb-4 fs-3">Premium furniture delivered straight to your doorstep.</p>
+                        <a href="index.html" class="btn btn-light btn-lg px-5 py-3 fs-5 mt-3">Order Now</a>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="5000" style="height: 100vh; min-height: 500px;">
+                    <img src="pics/hero-4.jpg" class="d-block w-100 h-100" alt="Bright Bedroom"
+                        style="object-fit: cover; filter: brightness(0.6);">
+                    <div
+                        class="carousel-caption d-flex flex-column h-100 align-items-center justify-content-center top-0 bottom-0">
+                        <h1 class="display-2 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Make Your
+                            House a Home</h1>
+                        <p class="lead mb-4 fs-3">Discover our range of wardrobes, beds, and more.</p>
+                        <a href="index.html" class="btn btn-light btn-lg px-5 py-3 fs-5 mt-3">Start Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section py-5" style="background-color: #e7e7e7;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="display-5 fw-bold mb-3" style="font-family: 'Playfair Display', serif;">Explore Our
+                        Diverse and Engaging Categories!</h2>
+                    <p class="text-muted mb-4">Stylish, high-quality Bedroom Furniture at unbeatable prices. Durable,
+                        elegant, and delivered fast across the UK. Check before you pay!</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><span class="fw-bold" style="color: #a0a0a0;">01</span> <span
+                                class="ms-2">Wardrobes</span></li>
+                        <li class="mb-2"><span class="fw-bold" style="color: #a0a0a0;">02</span> <span class="ms-2">Beds
+                                and Mattress</span></li>
+                        <li class="mb-2"><span class="fw-bold" style="color: #a0a0a0;">03</span> <span
+                                class="ms-2">Sliding Wardrobe</span></li>
+                        <li class="mb-2"><span class="fw-bold" style="color: #a0a0a0;">04</span> <span
+                                class="ms-2">Dressing Tables</span></li>
+                        <li class="mb-2"><span class="fw-bold" style="color: #a0a0a0;">05</span> <span
+                                class="ms-2">Chests of Drawers</span></li>
+                        <li class="mb-2"><span class="fw-bold" style="color: #a0a0a0;">06</span> <span class="ms-2">TV
+                                Units</span></li>
+                    </ul>
+                    <a href="index.html" class="btn btn-dark px-4 py-2 mt-3">Shop Now</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="pics/category-showcase.jpg" alt="Furniture Showcase" class="img-fluid shadow"
+                        onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (4 icons) -->
+    <section class="features-section bg-light py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-currency-pound" style="font-size: 3rem; color: #333;"></i>
+                    </div>
+                    <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">On Demand Pricing</h5>
+                    <p class="text-muted">On make £100+</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-award" style="font-size: 3rem; color: #333;"></i>
+                    </div>
+                    <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Quality Products</h5>
+                    <p class="text-muted">We made for you</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-building" style="font-size: 3rem; color: #333;"></i>
+                    </div>
+                    <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Best Built Quality</h5>
+                    <p class="text-muted">Be guarantee</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-headset" style="font-size: 3rem; color: #333;"></i>
+                    </div>
+                    <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">24/7 Online Support</h5>
+                    <p class="text-muted">We are here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="pics/wardrobe-showcase.jpg" alt="Wardrobe" class="img-fluid shadow"
+                        onerror="this.style.display='none'">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-6 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Questions &
+                        Answer</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Can I choose a specific
+                            delivery date?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>How long will it take to
+                            receive my order?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Do you deliver to all areas
+                            within the UK?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Do your products come with a
+                            warranty?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Is assembly required for
+                            your furniture?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Can I request fabric or
+                            material samples beforehand?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Are product dimensions
+                            available?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Do you offer financing or
+                            installment payment options?</li>
+                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>What should I do if my order
+                            arrives damaged or defective?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section bg-dark text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <h3
+                        style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; font-weight: 400;">
+                        Newsletter</h3>
+                    <h2 class="display-6 fw-bold" style="font-family: 'Playfair Display', serif;">Newsletter For Update
+                        & Offer</h2>
+                </div>
+                <div class="col-lg-8">
+                    <form class="d-flex">
+                        <input type="email" class="form-control form-control-lg me-2"
+                            placeholder="Enter your email address..."
+                            style="background-color: transparent; border: 1px solid rgba(255,255,255,0.3); color: white;">
+                        <button type="submit" class="btn btn-light btn-lg px-5">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 text-light bg-dark border-top mt-0">
+        <div class="container">
+            <div class="mb-3">
+                <a href="https://www.facebook.com/hf.furniture.co.uk" target="_blank"
+                    class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-facebook fs-5"></i>
+                </a>
+                <a href="https://www.instagram.com/hf.furniture.ltd/" target="_blank"
+                    class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-instagram fs-5"></i>
+                </a>
+                <a href="https://uk.pinterest.com/hffurniturescouk/" target="_blank"
+                    class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-pinterest fs-5"></i>
+                </a>
+                <a href="https://wa.me/447476748064" target="_blank" class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-whatsapp fs-5"></i>
+                </a>
+                <a href="https://wa.me/447846689490" target="_blank" class="text-light text-decoration-none">
+                    <i class="bi bi-whatsapp fs-5"></i>
+                </a>
+            </div>
+            <p class="mb-0">&copy; 2025 HF-Furniture Collection.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Cart JS -->
+    <script src="js/cart.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/protect.js"></script>
+
+    <!-- Hide loader when all resources loaded -->
+    <script>
+        const startTime = Date.now();
+
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('page-loader');
+            const elapsed = Date.now() - startTime;
+            const minDisplayTime = 3000; // 3 seconds minimum
+
+            // Calculate remaining time to reach minimum display
+            const remainingTime = Math.max(0, minDisplayTime - elapsed);
+
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => loader.remove(), 500);
+            }, remainingTime);
+        });
+    </script>
+</body>
+
+</html>

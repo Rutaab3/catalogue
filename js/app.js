@@ -83,20 +83,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const col = document.createElement('div');
-            col.className = 'col-md-6 col-lg-4 col-xl-3 fade-in';
+            col.className = 'col-md-6 col-lg-6 col-xl-4 col-xxl-3 fade-in';
             col.style.animation = `fadeIn 0.5s ease forwards ${index * 0.05}s`;
             col.style.opacity = '0'; // Initial state for animation
 
             col.innerHTML = `
                 <div class="card h-100 shadow-sm border-0">
                     <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
-                        <div class="carousel-inner bg-light rounded-top">
+                        <div class="carousel-inner bg-light">
                             ${carouselItemsHtml}
                         </div>
                     </div>
                     
                     <!-- Cart Button -->
-                    <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle shadow-sm cart-btn" 
+                    <button class="btn btn-light position-absolute top-0 end-0 m-2 shadow-sm cart-btn" 
                             data-path="${item.relativePath}" 
                             title="Add to Cart"
                             style="width: 35px; height: 35px; padding: 0; z-index: 10; display: flex; align-items: center; justify-content: center;">
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h6 class="card-title text-capitalize mb-2" style="font-family: 'Playfair Display', serif;">${item.name}</h6>
                         <div class="mt-auto">
                             <h6 class="text-muted small mb-2">£${item.price || 404}</h6>
-                            <a href="product.html?path=${encodeURIComponent(item.relativePath)}" class="btn btn-dark w-100 rounded-0">View Details</a>
+                            <a href="product.html?path=${encodeURIComponent(item.relativePath)}" class="btn btn-dark w-100">View Details</a>
                         </div>
                     </div>
                 </div>

@@ -11,5 +11,5 @@ pintrest
 https://uk.pinterest.com/hffurniturescouk/
 
 whatsapp:
-wa.me/+447476748064
-wa.me/+447846689490
+https://wa.me/447476748064
+https://wa.me/447846689490
