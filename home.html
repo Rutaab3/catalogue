@@ -32,35 +32,43 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top mx-2">
         <div class="container-fluid px-5 py-2 bg-dark">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="home.html">
                 <img src="pics/logo.svg" alt="HF-Furniture" height="50">
             </a>
             <div class="d-flex align-items-center order-lg-last ms-3">
-                <div class="d-flex align-items-center order-lg-last ms-3">
-                    <button class="btn btn-link nav-link text-white position-relative text-decoration-none"
-                        onclick="Cart.show()" style="font-family: 'Playfair Display', serif;">
-                        <i class="bi bi-cart-fill"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge  bg-white cart-count"
-                            style="font-size: 0.6rem; color: black;">
-                            0
-                        </span>
-                    </button>
-                </div>
+                <button class="btn btn-link nav-link text-white position-relative text-decoration-none"
+                    onclick="Cart.show()" style="font-family: 'Playfair Display', serif;">
+                    <i class="bi bi-cart-fill"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge  bg-white cart-count"
+                        style="font-size: 0.6rem; color: black;">
+                        0
+                    </span>
+                </button>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav filters" id="filters">
-                    <li class="nav-item"><button class="nav-link btn btn-link active" data-filter="all">All</button>
+                <ul class="navbar-nav align-items-center" id="filters">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">Home</a>
                     </li>
-                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="2 door">2 Door</button></li>
-                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="3 door">3 Door</button></li>
-                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="4 door">4 Door</button></li>
-                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="5 door">5 Door</button></li>
-                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="6 door">6 Door</button></li>
-                    <li class="nav-item"><button class="nav-link btn btn-link" data-filter="extras">Extras</button></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="catalogueDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Catalogue
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="catalogueDropdown">
+                            <li><a class="dropdown-item" href="index.html?filter=all">All</a></li>
+                            <li><a class="dropdown-item" href="index.html?filter=2 door">2 Door</a></li>
+                            <li><a class="dropdown-item" href="index.html?filter=3 door">3 Door</a></li>
+                            <li><a class="dropdown-item" href="index.html?filter=4 door">4 Door</a></li>
+                            <li><a class="dropdown-item" href="index.html?filter=5 door">5 Door</a></li>
+                            <li><a class="dropdown-item" href="index.html?filter=6 door">6 Door</a></li>
+                            <li><a class="dropdown-item" href="index.html?filter=extras">Extras</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -160,36 +168,36 @@
     </section>
 
     <!-- Features Section (4 icons) -->
-    <section class="features-section bg-light py-5">
+    <section class="features-section py-5 text-white">
         <div class="container">
-            <div class="row text-center">
+            <div class="row text-center features">
                 <div class="col-md-3 mb-4">
                     <div class="feature-icon mb-3">
-                        <i class="bi bi-currency-pound" style="font-size: 3rem; color: #333;"></i>
+                        <i class="bi bi-currency-pound" style="font-size: 3rem; color: #fff;"></i>
                     </div>
                     <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">On Demand Pricing</h5>
-                    <p class="text-muted">On make £100+</p>
+                    <p class="text-white-50">On make £100+</p>
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="feature-icon mb-3">
-                        <i class="bi bi-award" style="font-size: 3rem; color: #333;"></i>
+                        <i class="bi bi-award" style="font-size: 3rem; color: #fff;"></i>
                     </div>
                     <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Quality Products</h5>
-                    <p class="text-muted">We made for you</p>
+                    <p class="text-white-50">We made for you</p>
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="feature-icon mb-3">
-                        <i class="bi bi-building" style="font-size: 3rem; color: #333;"></i>
+                        <i class="bi bi-building" style="font-size: 3rem; color: #fff;"></i>
                     </div>
                     <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Best Built Quality</h5>
-                    <p class="text-muted">Be guarantee</p>
+                    <p class="text-white-50">Be guarantee</p>
                 </div>
                 <div class="col-md-3 mb-4">
                     <div class="feature-icon mb-3">
-                        <i class="bi bi-headset" style="font-size: 3rem; color: #333;"></i>
+                        <i class="bi bi-headset" style="font-size: 3rem; color: #fff;"></i>
                     </div>
                     <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">24/7 Online Support</h5>
-                    <p class="text-muted">We are here</p>
+                    <p class="text-white-50">We are here</p>
                 </div>
             </div>
         </div>
@@ -206,26 +214,154 @@
                 <div class="col-lg-6">
                     <h2 class="display-6 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Questions &
                         Answer</h2>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Can I choose a specific
-                            delivery date?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>How long will it take to
-                            receive my order?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Do you deliver to all areas
-                            within the UK?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Do your products come with a
-                            warranty?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Is assembly required for
-                            your furniture?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Can I request fabric or
-                            material samples beforehand?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Are product dimensions
-                            available?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>Do you offer financing or
-                            installment payment options?</li>
-                        <li class="mb-3"><i class="bi bi-chevron-right text-muted me-2"></i>What should I do if my order
-                            arrives damaged or defective?</li>
-                    </ul>
+                    <div class="accordion accordion-flush" id="faqAccordion">
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                    aria-expanded="false" aria-controls="collapseOne"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    Can I choose a specific delivery date?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    Yes, we offer flexible delivery options. During checkout, you can specify your
+                                    preferred delivery date, and our team will do their best to accommodate it.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    How long will it take to receive my order?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    Typically, orders are delivered within 7-14 business days across the UK. Custom or
+                                    bespoke items may take slightly longer.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                    aria-expanded="false" aria-controls="collapseThree"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    Do you deliver to all areas within the UK?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    Yes, we provide nationwide delivery across the mainland UK. Some remote areas may
+                                    incur a small delivery surcharge.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                    aria-expanded="false" aria-controls="collapseFour"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    Do your products come with a warranty?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    All our furniture products come with a standard 12-month manufacturer warranty
+                                    covering structural defects.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                                    aria-expanded="false" aria-controls="collapseFive"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    Is assembly required for your furniture?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    Some items are delivered flat-packed for safety during transit. We provide clear
+                                    instructions, and for certain products, we offer a professional assembly service
+                                    upon request.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+                                    aria-expanded="false" aria-controls="collapseSix"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    Can I request fabric or material samples beforehand?
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    Absolutely! Contact our support team via WhatsApp or Email, and we can arrange to
+                                    send swatch samples of our popular fabrics and finishes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
+                                    aria-expanded="false" aria-controls="collapseSeven"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    Are product dimensions available?
+                                </button>
+                            </h2>
+                            <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    Detailed dimensions are listed on each product page. If you need specific
+                                    measurements not shown, please reach out to our team.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight"
+                                    aria-expanded="false" aria-controls="collapseEight"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    Do you offer financing or installment payment options?
+                                </button>
+                            </h2>
+                            <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    We are currently working on integrating installment plans. Please contact us to
+                                    discuss available payment arrangements.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-0 border-bottom border-secondary-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent collapsed px-0 py-3 text-dark fw-normal"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine"
+                                    aria-expanded="false" aria-controls="collapseNine"
+                                    style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                                    What should I do if my order arrives damaged or defective?
+                                </button>
+                            </h2>
+                            <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body px-0 py-3 text-muted">
+                                    Please inspect your items upon delivery. If you notice any damage, inform the
+                                    delivery driver and contact us immediately with photos so we can arrange a
+                                    replacement or repair.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

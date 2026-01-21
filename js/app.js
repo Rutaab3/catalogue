@@ -1,35 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productGrid = document.getElementById('productGrid');
-    const filterBtns = document.querySelectorAll('.nav-link[data-filter]'); // Updated selector
+    const filterBtns = document.querySelectorAll('.nav-link[data-filter], .dropdown-item[href*="filter="]');
 
-    // Initial render
-    renderProducts(products);
+    // Helper to get filter from URL
+    function getFilterFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('filter') || 'all';
+    }
+
+    // Initial render based on URL
+    const initialFilter = getFilterFromUrl();
+    applyFilter(initialFilter);
 
     // Handle bfcache (back button)
     window.addEventListener('pageshow', (event) => {
         if (event.persisted) {
-            renderProducts(products);
+            applyFilter(getFilterFromUrl()); // Re-apply filter from URL
         }
     });
 
-    // Filter event listeners
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
-
-            const filter = btn.getAttribute('data-filter');
+    // Filter logic
+    function applyFilter(filter) {
+        // Update UI active state if needed (optional for dropdown items)
+        filterBtns.forEach(btn => {
+            // loose match logic or strictly match href/data-filter
+            const btnFilter = btn.getAttribute('data-filter') || 
+                              (btn.getAttribute('href') ? new URLSearchParams(btn.getAttribute('href').split('?')[1]).get('filter') : null);
             
-            if (filter === 'all') {
-                renderProducts(products);
+            if (btnFilter === filter) {
+                btn.classList.add('active');
             } else {
-                const filtered = products.filter(p => p.category === filter);
-                renderProducts(filtered);
+                btn.classList.remove('active');
             }
         });
+
+        if (filter === 'all') {
+            renderProducts(products);
+        } else {
+            const filtered = products.filter(p => p.category === filter);
+            renderProducts(filtered);
+        }
+    }
+
+    // Event listeners
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Determine filter value
+            let filter = btn.getAttribute('data-filter');
+            if (!filter && btn.getAttribute('href')) {
+                const url = new URL(btn.href, window.location.origin);
+                // Check if it's a link to index.html (or current page) with a filter param
+                if (url.pathname.endsWith('index.html') || url.pathname === window.location.pathname) {
+                         filter = url.searchParams.get('filter');
+                    }
+            }
+
+            if (filter) {
+                e.preventDefault();
+                
+                // Update URL without reload
+                const newUrl = new URL(window.location.href);
+                newUrl.searchParams.set('filter', filter);
+                window.history.pushState({}, '', newUrl);
+
+                applyFilter(filter);
+            }
+        });
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', () => {
+        applyFilter(getFilterFromUrl());
     });
 
     function getDimensions(item) {

@@ -216,3 +216,45 @@ h6,
 .wishlist-btn-related:active {
     transform: scale(0.95);
 }
+
+.features-section {
+    padding: 2.5rem 0.5rem;
+    transition: all 0.3s ease;
+    background: url('../pics/cta.webp') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+.features {
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 1);
+}
+
+/* FAQ Accordion Styles */
+.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    transform: rotate(-180deg);
+}
+
+.accordion-item {
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.02) !important;
+}

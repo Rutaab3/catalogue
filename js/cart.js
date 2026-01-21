@@ -155,7 +155,6 @@ const Cart = {
                         <span class="fw-bold" id="cartSubtotal">£0.00</span>
                     </div>
                     <div class="d-grid gap-2">
-                         <button class="btn btn-outline-dark text-uppercase py-2">View Cart</button>
                          <button class="btn btn-dark text-uppercase py-2" onclick="Cart.checkout()">Checkout</button>
                     </div>
                 </div>

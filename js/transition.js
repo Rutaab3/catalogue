@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Wait for animation
                 setTimeout(() => {
                     window.location.href = href;
-                }, 500); // 500ms matches CSS
+                }, 100); // 500ms matches CSS
             }
         });
     });
