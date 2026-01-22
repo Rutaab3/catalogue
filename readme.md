@@ -1,16 +1,17 @@
---     /$$   /$$ /$$$$$$$$         /$$$$$$$$ /$$   /$$ /$$$$$$$  /$$   /$$ /$$$$$$ /$$$$$$$$ /$$   /$$ /$$$$$$$  /$$$$$$$$
---    | $$  | $$| $$_____/        | $$_____/| $$  | $$| $$__  $$| $$$ | $$|_  $$_/|__  $$__/| $$  | $$| $$__  $$| $$_____/
---    | $$  | $$| $$              | $$      | $$  | $$| $$  \ $$| $$$$| $$  | $$     | $$   | $$  | $$| $$  \ $$| $$      
---    | $$$$$$$$| $$$$$  /$$$$$$| | $$$$$   | $$  | $$| $$$$$$$/| $$ $$ $$  | $$     | $$   | $$  | $$| $$$$$$$/| $$$$$   
---    | $$__  $$| $$__/ |______/  | $$__/   | $$  | $$| $$__  $$| $$  $$$$  | $$     | $$   | $$  | $$| $$__  $$| $$__/   
---    | $$  | $$| $$              | $$      | $$  | $$| $$  \ $$| $$\  $$$  | $$     | $$   | $$  | $$| $$  \ $$| $$      
---    | $$  | $$| $$              | $$      |  $$$$$$/| $$  | $$| $$ \  $$ /$$$$$$   | $$   |  $$$$$$/| $$  | $$| $$$$$$$$
---    |__/  |__/|__/              |__/       \______/ |__/  |__/|__/  \__/|______/   |__/    \______/ |__/  |__/|________/
+--     /$$   /$$ /$$$$$$$$         
+--    | $$  | $$| $$_____/        
+--    | $$  | $$| $$              
+--    | $$$$$$$$| $$$$$ 
+--    | $$__  $$| $$__/ 
+--    | $$  | $$| $$             
+--    | $$  | $$| $$            
+--    |__/  |__/|__/  
+
+
 
 # HF-Furniture Collection
 
-A modern, responsive **furniture catalogue website** built with vanilla HTML, CSS, and JavaScript.  
-Browse elegant wardrobes and furniture by color variants (Black / Grey / White), filter by door count, add items to cart, and complete orders via WhatsApp.
+![Project Preview](pics/readme.webp)
 
 ## Features
 
@@ -28,54 +29,55 @@ Browse elegant wardrobes and furniture by color variants (Black / Grey / White),
 ## Tech Stack
 
 ### Frontend
-- **HTML5** - Semantic markup
-- **CSS3** - Custom styling with modern features
-- **JavaScript (ES6+)** - Vanilla JS for all functionality
+- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="HTML5" width="40" height="40"/> **HTML5** - Semantic markup
+- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS3" width="40" height="40"/> **CSS3** - Custom styling with modern features
+- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript" width="40" height="40"/> **JavaScript (ES6+)** - Vanilla JS for all functionality
 
 ### Libraries & Frameworks
-- **[Bootstrap 5.3.0](https://getbootstrap.com/)** - Responsive grid system and components
-- **[Bootstrap Icons 1.11.3](https://icons.getbootstrap.com/)** - Icon library
-- **[SweetAlert2](https://sweetalert2.github.io/)** - Beautiful modal dialogs
-- **[Google Fonts](https://fonts.google.com/)** - Playfair Display & Lato typography
+- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" width="40" height="40"/> **[Bootstrap 5.3.0](https://getbootstrap.com/)** - Responsive grid system
+- <img src="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" alt="Bootstrap Icons" width="30"/> **[Bootstrap Icons 1.11.3](https://icons.getbootstrap.com/)** - Icon library
+- <img src="https://sweetalert2.github.io/images/sweetalert2-logo.png" alt="SweetAlert2" width="100"/> **[SweetAlert2](https://sweetalert2.github.io/)** - Beautiful modal dialogs
+- <img src="https://fonts.gstatic.com/s/i/productlogos/fonts/v7/192px.svg" alt="Google Fonts" width="35"/> **[Google Fonts](https://fonts.google.com/)** - Playfair Display & Lato typography
 
 ## Project Structure
 
 ```
 catalogue/
 ├── index.html              # Main catalogue page with product grid
-├── home.html              # Landing page with hero carousel and features
-├── product.html           # Product detail page
-├── index-old.html         # Backup of previous index
-├── product_old.html       # Backup of previous product page
+├── home.html               # Landing page with hero carousel and features
+├── product.html            # Product detail page
+├── index-old.html          # Backup of previous index
+├── product_old.html        # Backup of previous product page
 │
 ├── css/
-│   └── style.css          # Custom styles and theming
+│   └── style.css           # Custom styles and theming
 │
 ├── js/
-│   ├── app.js             # Main app logic and filtering
-│   ├── cart.js            # Shopping cart functionality
-│   ├── data.js            # Product data definitions
-│   ├── description.js     # Product descriptions
-│   ├── transition.js      # Page transition effects
-│   └── protect.js         # Content protection features
+│   ├── app.js              # Main app logic and filtering
+│   ├── cart.js             # Shopping cart functionality
+│   ├── data.js             # Product data definitions
+│   ├── description.js      # Product descriptions
+│   ├── transition.js       # Page transition effects
+│   └── protect.js          # Content protection features
 │
-├── pics/                  # Images and assets
-│   ├── logo.svg           # Site logo
-│   ├── logo.webp          # Logo webp format
-│   ├── logo2.webp         # Alternative logo
-│   ├── hero-1.jpg         # Hero section backgrounds
+├── pics/                   # Images and assets
+│   ├── logo.svg            # Site logo
+│   ├── logo.webp           # Logo webp format
+│   ├── logo2.webp          # Alternative logo
+│   ├── hero-1.jpg          # Hero section backgrounds
 │   ├── hero-2.jpg
 │   ├── hero-3.jpg
 │   ├── hero-4.jpg
-│   ├── black.webp         # Color swatches
+│   ├── black.webp          # Color swatches
 │   ├── grey.webp
 │   └── white.webp
+│   └── readme.webp         # Project preview image
 │
-├── Black/                 # Black variant product images
-├── Grey/                  # Grey variant product images
-├── White/                 # White variant product images
+├── Black/                  # Black variant product images
+├── Grey/                   # Grey variant product images
+├── White/                  # White variant product images
 │
-└── docs/                  # Documentation files
+└── docs/                   # Documentation files
     ├── dimension.md
     └── dimensions.md
 ```
@@ -141,11 +143,10 @@ Modify `css/style.css` to customize colors, fonts, and layout.
 
 ## Contact
 
-- **Website**: [HF-Furniture](https://hf-furniture.co.uk)
-- **Facebook**: [@hf.furniture.co.uk](https://www.facebook.com/hf.furniture.co.uk)
-- **Instagram**: [@hf.furniture.ltd](https://www.instagram.com/hf.furniture.ltd/)
-- **Pinterest**: [HF Furniture](https://uk.pinterest.com/hffurniturescouk/)
-- **WhatsApp**: [+44 7476 748064](https://wa.me/447476748064) | [+44 7846 689490](https://wa.me/447846689490)
+- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/facebook/facebook-original.svg" alt="Facebook" width="20"/> **Facebook**: [@hf.furniture.co.uk](https://www.facebook.com/hf.furniture.co.uk)
+- <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" width="20"/> **Instagram**: [@hf.furniture.ltd](https://www.instagram.com/hf.furniture.ltd/)
+- <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest" width="20"/> **Pinterest**: [HF Furniture](https://uk.pinterest.com/hffurniturescouk/)
+- <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20"/> **WhatsApp**: [+44 7476 748064](https://wa.me/447476748064) | [+44 7846 689490](https://wa.me/447846689490)
 
 ---
 
