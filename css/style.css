@@ -183,7 +183,6 @@ h6,
 
 /* Card Hover Effects */
 .card {
-    min-width: 320px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
