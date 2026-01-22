@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const headingMap = {
             'all': 'Our Collection',
-            '2 door': 'Our 2 Door Collection',
-            '3 door': 'Our 3 Door Collection',
-            '4 door': 'Our 4 Door Collection',
-            '5 door': 'Our 5 Door Collection',
-            '6 door': 'Our 6 Door Collection',
-            'extras': 'Our Extras Collection'
+            '2 door': '2 Door Collection',
+            '3 door': '3 Door Collection',
+            '4 door': '4 Door Collection',
+            '5 door': '5 Door Collection',
+            '6 door': '6 Door Collection',
+            'extras': 'Extras Collection'
         };
         
         collectionHeading.textContent = headingMap[filter] || 'Our Collection';
