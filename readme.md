@@ -1,14 +1,3 @@
---     /$$   /$$ /$$$$$$$$         
---    | $$  | $$| $$_____/        
---    | $$  | $$| $$              
---    | $$$$$$$$| $$$$$ 
---    | $$__  $$| $$__/ 
---    | $$  | $$| $$             
---    | $$  | $$| $$            
---    |__/  |__/|__/  
-
-
-
 # HF-Furniture Collection
 
 ![Project Preview](pics/readme.webp)
@@ -35,9 +24,9 @@
 
 ### Libraries & Frameworks
 - <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" width="40" height="40"/> **[Bootstrap 5.3.0](https://getbootstrap.com/)** - Responsive grid system
-- <img src="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" alt="Bootstrap Icons" width="30"/> **[Bootstrap Icons 1.11.3](https://icons.getbootstrap.com/)** - Icon library
-- <img src="https://sweetalert2.github.io/images/sweetalert2-logo.png" alt="SweetAlert2" width="100"/> **[SweetAlert2](https://sweetalert2.github.io/)** - Beautiful modal dialogs
-- <img src="https://fonts.gstatic.com/s/i/productlogos/fonts/v7/192px.svg" alt="Google Fonts" width="35"/> **[Google Fonts](https://fonts.google.com/)** - Playfair Display & Lato typography
+- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap Icons" width="30"/> **[Bootstrap Icons 1.11.3](https://icons.getbootstrap.com/)** - Icon library
+- <img src="https://raw.githubusercontent.com/sweetalert2/sweetalert2/main/assets/sweetalert2-logo.png" alt="SweetAlert2" width="100"/> **[SweetAlert2](https://sweetalert2.github.io/)** - Beautiful modal dialogs
+- <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Google_Fonts_logo.svg" alt="Google Fonts" width="30"/> **[Google Fonts](https://fonts.google.com/)** - Playfair Display & Lato typography
 
 ## Project Structure
 
@@ -149,5 +138,3 @@ Modify `css/style.css` to customize colors, fonts, and layout.
 - <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20"/> **WhatsApp**: [+44 7476 748064](https://wa.me/447476748064) | [+44 7846 689490](https://wa.me/447846689490)
 
 ---
-
-Built by the HF-Furniture team
