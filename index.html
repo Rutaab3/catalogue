@@ -50,24 +50,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center" id="filters">
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="home.html">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="catalogueDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Catalogue
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="catalogueDropdown">
-                            <li><a class="dropdown-item" href="index.html?filter=all">All</a></li>
-                            <li><a class="dropdown-item" href="index.html?filter=2 door">2 Door</a></li>
-                            <li><a class="dropdown-item" href="index.html?filter=3 door">3 Door</a></li>
-                            <li><a class="dropdown-item" href="index.html?filter=4 door">4 Door</a></li>
-                            <li><a class="dropdown-item" href="index.html?filter=5 door">5 Door</a></li>
-                            <li><a class="dropdown-item" href="index.html?filter=6 door">6 Door</a></li>
-                            <li><a class="dropdown-item" href="index.html?filter=extras">Extras</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Catalogue</a>
                     </li>
                 </ul>
             </div>
@@ -85,6 +73,20 @@
 
     <!-- Main Content -->
     <div class="container-fluid py-5 px-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <p style="font-family: 'Playfair Display', serif; margin: 0;" class="text-dark"><span><a class="text-dark" href="home.html">HF-Furnitures/</a></span><span><a class="text-dark" href="index.html">Catalogue</a></span></p>
+            <h1 id="collectionHeading" style="font-family: 'Playfair Display', serif; margin: 0;">Our Collection</h1>
+            <select class="form-select" id="filterSelect"
+                style="max-width: 150px; font-family: 'Playfair Display', serif;">
+                <option value="all" selected>All</option>
+                <option value="2 door">2 Door</option>
+                <option value="3 door">3 Door</option>
+                <option value="4 door">4 Door</option>
+                <option value="5 door">5 Door</option>
+                <option value="6 door">6 Door</option>
+                <option value="extras">Extras</option>
+            </select>
+        </div>
         <div class="row g-4" id="productGrid">
             <!-- Products will be loaded here via app.js -->
         </div>

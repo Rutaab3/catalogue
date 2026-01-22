@@ -229,15 +229,15 @@ const Cart = {
                         <div class="d-flex justify-content-center gap-3">
                             <button class="color-choice selected" data-color="Black" onclick="document.querySelectorAll('.color-choice').forEach(b => b.classList.remove('selected')); this.classList.add('selected');">
                                 <img src="pics/black.webp" alt="Black" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                                <span class="d-block mt-2 text-dark text-center">Black</span>
+                                <span class="d-block mt-2 text-dark text-center"></span>
                             </button>
                             <button class="color-choice" data-color="Grey" onclick="document.querySelectorAll('.color-choice').forEach(b => b.classList.remove('selected')); this.classList.add('selected');">
                                 <img src="pics/grey.webp" alt="Grey" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                                <span class="d-block mt-2 text-dark text-center">Grey</span>
+                                <span class="d-block mt-2 text-dark text-center"></span>
                             </button>
                             <button class="color-choice" data-color="White" onclick="document.querySelectorAll('.color-choice').forEach(b => b.classList.remove('selected')); this.classList.add('selected');">
                                 <img src="pics/white.webp" alt="White" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                                <span class="d-block mt-2 text-dark text-center">White</span>
+                                <span class="d-block mt-2 text-dark text-center"></span>
                             </button>
                         </div>
                     </div>

@@ -113,7 +113,34 @@ h6,
     text-underline-offset: 5px;
 }
 
-/* Scrollbar */
+/* Filter Select Dropdown Styles */
+#filterSelect {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+#filterSelect:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+#filterSelect option {
+    background-color: #fff;
+    color: #000;
+}
+
+#filterSelect option:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+#filterSelect option:checked {
+    background-color: #000;
+    color: #fff;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -259,7 +286,7 @@ h6,
 
 /* Color Choice Modal Styles */
 .color-choice {
-    background: rgb(226, 226, 226);
+    background: #272424;
     border: 3px solid transparent;
     padding: 8px;
     cursor: pointer;
@@ -270,16 +297,16 @@ h6,
 }
 
 .color-choice:hover {
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: #9b9b9b;
     transform: scale(1.05);
 }
 
 .color-choice.selected {
-    border-color: #fff;
+    border-color: #9b9b9b;
     transform: scale(1.1);
 }
 
 .color-choice span {
     font-size: 0.9rem;
-    color: #fff;
+    color: #9b9b9b;
 }

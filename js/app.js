@@ -1,11 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productGrid = document.getElementById('productGrid');
-    const filterBtns = document.querySelectorAll('.nav-link[data-filter], .dropdown-item[href*="filter="]');
+    const filterSelect = document.getElementById('filterSelect');
+    const collectionHeading = document.getElementById('collectionHeading');
 
     // Helper to get filter from URL
     function getFilterFromUrl() {
         const params = new URLSearchParams(window.location.search);
         return params.get('filter') || 'all';
+    }
+
+    // Helper to update heading based on filter
+    function updateHeading(filter) {
+        if (!collectionHeading) return;
+        
+        const headingMap = {
+            'all': 'Our Collection',
+            '2 door': 'Our 2 Door Collection',
+            '3 door': 'Our 3 Door Collection',
+            '4 door': 'Our 4 Door Collection',
+            '5 door': 'Our 5 Door Collection',
+            '6 door': 'Our 6 Door Collection',
+            'extras': 'Our Extras Collection'
+        };
+        
+        collectionHeading.textContent = headingMap[filter] || 'Our Collection';
     }
 
     // Initial render based on URL
@@ -21,18 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filter logic
     function applyFilter(filter) {
-        // Update UI active state if needed (optional for dropdown items)
-        filterBtns.forEach(btn => {
-            // loose match logic or strictly match href/data-filter
-            const btnFilter = btn.getAttribute('data-filter') || 
-                              (btn.getAttribute('href') ? new URLSearchParams(btn.getAttribute('href').split('?')[1]).get('filter') : null);
-            
-            if (btnFilter === filter) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
+        // Update select dropdown value
+        if (filterSelect) {
+            filterSelect.value = filter;
+        }
+
+        // Update heading
+        updateHeading(filter);
 
         if (filter === 'all') {
             renderProducts(products);
@@ -42,31 +55,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event listeners
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            // Determine filter value
-            let filter = btn.getAttribute('data-filter');
-            if (!filter && btn.getAttribute('href')) {
-                const url = new URL(btn.href, window.location.origin);
-                // Check if it's a link to index.html (or current page) with a filter param
-                if (url.pathname.endsWith('index.html') || url.pathname === window.location.pathname) {
-                         filter = url.searchParams.get('filter');
-                    }
-            }
+    // Event listener for select dropdown
+    if (filterSelect) {
+        filterSelect.addEventListener('change', (e) => {
+            const filter = e.target.value;
+            
+            // Update URL without reload
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('filter', filter);
+            window.history.pushState({}, '', newUrl);
 
-            if (filter) {
-                e.preventDefault();
-                
-                // Update URL without reload
-                const newUrl = new URL(window.location.href);
-                newUrl.searchParams.set('filter', filter);
-                window.history.pushState({}, '', newUrl);
-
-                applyFilter(filter);
-            }
+            applyFilter(filter);
         });
-    });
+    }
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', () => {
