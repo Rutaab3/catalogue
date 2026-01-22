@@ -199,26 +199,12 @@
             const btn = document.getElementById('cartBtnLarge');
 
             btn.addEventListener('click', () => {
-                Cart.add(currentProduct.relativePath);
+                // Show color selection modal
+                Cart.showColorModal(currentProduct.relativePath, currentProduct.name);
 
                 // Animate
                 btn.style.transform = 'scale(0.98)';
                 setTimeout(() => btn.style.transform = 'scale(1)', 200);
-
-                // SweetAlert notification
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Added to Cart!",
-                    showConfirmButton: false,
-                    timer: 1500,
-                    toast: true,
-                    background: '#212529',
-                    color: '#fff',
-                    customClass: {
-                        popup: 'shadow-lg'
-                    }
-                });
             });
 
             // Render Image
@@ -318,6 +304,98 @@
                 setTimeout(() => loader.remove(), 500);
             }, remainingTime);
         });
+
+
+        //  --- Related Products Logic ---
+        if (currentProduct) {
+            const relatedContainer = document.createElement('div');
+            relatedContainer.className = 'container py-5 border-top';
+            relatedContainer.innerHTML = `
+                <h3 class="text-capitalize display-6 mb-4" style="font-family: 'Playfair Display', serif;">You Might Also Like</h3>
+                <div class="row g-4" id="relatedProductsGrid"></div>
+            `;
+            document.querySelector('.container.py-5').after(relatedContainer);
+
+            // Filter related products (same category, exclude current)
+            const relatedMap = products.filter(p => p.category === currentProduct.category && p.relativePath !== currentProduct.relativePath);
+
+            // Limit to 4 items for better UI? Or show all? User said "show more artifacts form that same 2 door folder" - implying all or a list. Let's show all for now as per "same as index".
+            const relatedGrid = document.getElementById('relatedProductsGrid');
+
+            if (relatedMap.length > 0) {
+                relatedMap.forEach((item, index) => {
+                    // Construct paths for 3 colors
+                    const colors = ['Black', 'Grey', 'White'];
+                    // Create Carousel ID (unique for this page)
+                    const carouselId = `related-carousel-${index}`;
+
+                    let carouselItemsHtml = '';
+                    colors.forEach((color, i) => {
+                        const activeClass = i === 0 ? 'active' : '';
+                        const imagePath = `${color}/${item.relativePath}`;
+                        const encodedPath = encodeURI(imagePath);
+
+                        carouselItemsHtml += `
+                            <div class="carousel-item ${activeClass}" data-bs-interval="3000">
+                                <img src="${encodedPath}" class="d-block w-100" alt="${item.name}" loading="lazy" style="height: 300px; object-fit: contain;">
+                            </div>
+                        `;
+                    });
+
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 col-lg-6 col-xl-4 col-xxl-3 fade-in';
+                    col.style.animation = `fadeIn 0.5s ease forwards ${index * 0.05}s`;
+                    col.style.opacity = '0';
+
+                    col.innerHTML = `
+                        <div class="card h-100 shadow-sm border-0">
+                            <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
+                                <div class="carousel-inner bg-light">
+                                    ${carouselItemsHtml}
+                                </div>
+                            </div>
+                            
+                            <!-- Cart Button -->
+                            <button class="btn btn-light position-absolute top-0 end-0 m-2 shadow-sm cart-btn-related" 
+                                    data-path="${item.relativePath}" 
+                                    title="Add to Cart"
+                                    style="width: 35px; height: 35px; padding: 0; z-index: 10; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-cart-plus"></i>
+                            </button>
+
+                            <div class="card-body text-center d-flex flex-column">
+                                <h6 class="card-title text-capitalize mb-2" style="font-family: 'Playfair Display', serif;">${item.name}</h6>
+                                <div class="mt-auto">
+                                    <h6 class="text-muted small mb-2">£${item.price || 404}</h6>
+                                    <a href="product.html?path=${encodeURIComponent(item.relativePath)}" class="btn btn-dark w-100">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    relatedGrid.appendChild(col);
+
+                    // Init Carousel
+                    new bootstrap.Carousel(document.getElementById(carouselId), {
+                        interval: 3000,
+                        ride: 'carousel',
+                        pause: false
+                    });
+
+                    // Cart Listener
+                    const cartBtn = col.querySelector('.cart-btn-related');
+                    cartBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+
+                        // Show color selection modal
+                        Cart.showColorModal(item.relativePath, item.name);
+                    });
+                });
+            } else {
+                relatedContainer.innerHTML += '<p class="text-muted">No other products found in this category.</p>';
+            }
+        }
+
     </script>
 </body>
 

@@ -28,7 +28,7 @@ function showProtectionMessage(x, y) {
     // Style
     Object.assign(msg.style, {
         position: 'fixed',
-        backgroundColor: 'rgba(220, 53, 69, 0.9)', // Bootstrap danger red, slightly transparent
+        backgroundColor: 'rgba(255, 0, 25, 0.77)', // Bootstrap danger red, slightly transparent
         color: 'white',
         padding: '8px 16px',
         borderRadius: '20px',
@@ -36,10 +36,10 @@ function showProtectionMessage(x, y) {
         fontWeight: '500',
         pointerEvents: 'none',
         zIndex: '10000',
-        boxShadow: '0 4px 12px rgba(220, 53, 69, 0.3)',
-        top: '20px',
+        boxShadow: '0 4px 12px rgba(221, 0, 22, 0.3)',
+        top: '50%',
         left: '50%',
-        transform: 'translateX(-50%)',
+        transform: 'translate(-50%, -50%)',
         opacity: '0',
         transition: 'opacity 0.3s ease, transform 0.3s ease'
     });

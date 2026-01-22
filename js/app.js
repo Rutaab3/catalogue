@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     
                     <!-- Cart Button -->
-                    <button class="btn btn-light position-absolute top-0 end-0 m-2 shadow-sm cart-btn" 
+                    <button class="btn position-absolute top-0 end-0 m-2 shadow-sm cart-btn" 
                             data-path="${item.relativePath}" 
                             title="Add to Cart"
                             style="width: 35px; height: 35px; padding: 0; z-index: 10; display: flex; align-items: center; justify-content: center;">
@@ -169,28 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
             cartBtn.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevent card click
                 
-                Cart.add(item.relativePath);
+                // Show color selection modal
+                Cart.showColorModal(item.relativePath, item.name);
                 
                 // Animation
                 cartBtn.style.transform = 'scale(1.3)';
                 setTimeout(() => {
                     cartBtn.style.transform = 'scale(1)';
                 }, 300);
-                
-                // SweetAlert notification
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Added to Cart!",
-                    showConfirmButton: false,
-                    timer: 1500,
-                    toast: true,
-                    background: '#212529',
-                    color: '#fff',
-                    customClass: {
-                        popup: 'shadow-lg'
-                    }
-                });
             });
         });
     }
