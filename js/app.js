@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 carouselItemsHtml += `
                     <div class="carousel-item ${activeClass}" data-bs-interval="3000">
-                        <img src="${encodedPath}" class="d-block w-100" alt="${item.name}" loading="lazy" style="height: 300px; object-fit: contain;">
+                        <img src="${encodedPath}" class="d-block w-100" alt="${item.name}" loading="lazy" style="height: 300px; object-fit: contain;" onerror="ImageFallback.handle(this)">
                     </div>
                 `;
             });

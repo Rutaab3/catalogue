@@ -50,13 +50,12 @@ catalogue/
 │   └── protect.js          # Content protection features
 │
 ├── pics/                   # Images and assets
-│   ├── logo.svg            # Site logo
-│   ├── logo.webp           # Logo webp format
+│   ├── logo.webp           # Site logo
 │   ├── logo2.webp          # Alternative logo
-│   ├── hero-1.jpg          # Hero section backgrounds
-│   ├── hero-2.jpg
-│   ├── hero-3.jpg
-│   ├── hero-4.jpg
+│   ├── hero-1.webp         # Hero section backgrounds
+│   ├── hero-2.webp
+│   ├── hero-3.webp
+│   ├── hero-4.webp
 │   ├── black.webp          # Color swatches
 │   ├── grey.webp
 │   └── white.webp
