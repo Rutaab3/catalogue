@@ -89,17 +89,7 @@
 
                 <div class="mb-4">
                     <h5 class="text-secondary small text-uppercase">Choose Finish</h5>
-                    <div class="d-flex gap-3 mt-2">
-                        <div class="color-option active" onclick="changeColor('Black')" title="Black">
-                            <img src="pics/black.webp" alt="Black" onerror="ImageFallback.handle(this)">
-                        </div>
-                        <div class="color-option" onclick="changeColor('Grey')" title="Grey">
-                            <img src="pics/grey.webp" alt="Grey" onerror="ImageFallback.handle(this)">
-                        </div>
-                        <div class="color-option" onclick="changeColor('White')" title="White">
-                            <img src="pics/white.webp" alt="White" onerror="ImageFallback.handle(this)">
-                        </div>
-                    </div>
+                    <div id="finishOptions" class="d-flex gap-3 mt-2 flex-wrap"></div>
                 </div>
 
                 <div class="mb-4">
@@ -170,9 +160,10 @@
         // Inline JS purely for context access
         const params = new URLSearchParams(window.location.search);
         const relativePath = params.get('path');
-        const colors = ['Black', 'Grey', 'White'];
         let currentProduct = null;
-        let currentColor = 'Black';
+        let currentColor = getDefaultFinishLabel();
+
+        renderFinishOptions();
 
         if (relativePath) {
             // Find product
@@ -235,7 +226,7 @@
 
             // Update active state of buttons
             document.querySelectorAll('.color-option').forEach(btn => {
-                if (btn.title === color) btn.classList.add('active');
+                if (btn.getAttribute('data-color') === color) btn.classList.add('active');
                 else btn.classList.remove('active');
             });
         }
@@ -245,9 +236,21 @@
             const img = document.getElementById('mainImage');
             img.style.opacity = '0';
             setTimeout(() => {
-                ImageFallback.setSource(img, encodeURI(`${currentColor}/${currentProduct.relativePath}`), `${currentProduct.name}`);
+                ImageFallback.setSource(img, getProductImagePath(currentProduct.relativePath, currentColor), `${currentProduct.name}`);
                 img.onload = () => { img.style.opacity = '1'; };
             }, 300);
+        }
+
+        function renderFinishOptions() {
+            const finishOptions = document.getElementById('finishOptions');
+
+            finishOptions.innerHTML = productFinishes.map((finish) => `
+                <div class="color-option${finish.label === currentColor ? ' active' : ''}" data-color="${finish.label}" onclick="changeColor('${finish.label}')" title="${finish.label}">
+                    ${finish.swatchImage
+                        ? `<img src="${finish.swatchImage}" alt="${finish.label}" onerror="ImageFallback.handle(this)">`
+                        : `<span class="finish-swatch" style="background-color: ${finish.swatchColor};" aria-hidden="true"></span>`}
+                </div>
+            `).join('');
         }
 
         // Duplicate of helper logic (could be shared in utils.js)
@@ -312,20 +315,16 @@
 
             if (relatedMap.length > 0) {
                 relatedMap.forEach((item, index) => {
-                    // Construct paths for 3 colors
-                    const colors = ['Black', 'Grey', 'White'];
                     // Create Carousel ID (unique for this page)
                     const carouselId = `related-carousel-${index}`;
 
                     let carouselItemsHtml = '';
-                    colors.forEach((color, i) => {
+                    productFinishes.forEach((finish, i) => {
                         const activeClass = i === 0 ? 'active' : '';
-                        const imagePath = `${color}/${item.relativePath}`;
-                        const encodedPath = encodeURI(imagePath);
 
                         carouselItemsHtml += `
                             <div class="carousel-item ${activeClass}" data-bs-interval="3000">
-                                <img src="${encodedPath}" class="d-block w-100" alt="${item.name}" loading="lazy" style="height: 300px; object-fit: contain;" onerror="ImageFallback.handle(this)">
+                                <img src="${getProductImagePath(item.relativePath, finish.label)}" class="d-block w-100" alt="${item.name}" loading="lazy" style="height: 300px; object-fit: contain;" onerror="ImageFallback.handle(this)">
                             </div>
                         `;
                     });

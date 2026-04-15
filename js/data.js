@@ -149,6 +149,16 @@
     category: "5 door",
        price: 404
   },  {
+    relativePath: "5 door/simple/one long mirror.webp",
+    name: "5 door / simple / one long mirror",
+    category: "5 door",
+       price: 404
+  },  {
+    relativePath: "5 door/simple/three long mirror.webp",
+    name: "5 door / simple / three long mirror",
+    category: "5 door",
+       price: 404
+  },  {
     relativePath: "6 door/bottom drawers/four long and two short mirror with two bottom drawers.webp",
     name: "6 door / bottom drawers / four long and two short mirror with two bottom drawers",
     category: "6 door",
@@ -230,3 +240,26 @@ const dimensions = {
     "6 chest": { width: "77.5cm", height: "122cm", depth: "40.5cm" }
   }
 };
+
+const productFinishes = [
+  { label: "Black", folder: "black", swatchImage: "pics/black.webp" },
+  { label: "White", folder: "white", swatchImage: "pics/white.webp" },
+  { label: "Grey", folder: "grey", swatchImage: "pics/grey.webp" },
+  { label: "Oak", folder: "oak", swatchColor: "#b4885c" }
+];
+
+function getFinishOption(finish = productFinishes[0].label) {
+  const normalizedFinish = String(finish).trim().toLowerCase();
+
+  return productFinishes.find((option) => (
+    option.label.toLowerCase() === normalizedFinish || option.folder === normalizedFinish
+  )) || productFinishes[0];
+}
+
+function getDefaultFinishLabel() {
+  return productFinishes[0].label;
+}
+
+function getProductImagePath(relativePath, finish = productFinishes[0].label) {
+  return encodeURI(`${getFinishOption(finish).folder}/${relativePath}`);
+}

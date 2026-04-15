@@ -18,14 +18,21 @@ const Cart = {
         localStorage.setItem(this.key, JSON.stringify(cart));
     },
 
-    add(productPath, color = 'Black') {
+    getDefaultColor() {
+        return getDefaultFinishLabel();
+    },
+
+    add(productPath, color = getDefaultFinishLabel()) {
         const cart = this.get();
-        const existingItem = cart.find((item) => item.path === productPath && item.color === color);
+        const normalizedColor = getFinishOption(color).label;
+        const existingItem = cart.find((item) => (
+            item.path === productPath && getFinishOption(item.color).label === normalizedColor
+        ));
 
         if (existingItem) {
             existingItem.qty = (existingItem.qty || 1) + 1;
         } else {
-            cart.push({ path: productPath, qty: 1, color });
+            cart.push({ path: productPath, qty: 1, color: normalizedColor });
         }
 
         this.save(cart);
@@ -34,7 +41,10 @@ const Cart = {
     },
 
     remove(productPath, color) {
-        const nextCart = this.get().filter((item) => !(item.path === productPath && item.color === color));
+        const normalizedColor = getFinishOption(color).label;
+        const nextCart = this.get().filter((item) => !(
+            item.path === productPath && getFinishOption(item.color).label === normalizedColor
+        ));
         this.save(nextCart);
         this.updateUI();
     },
@@ -49,7 +59,10 @@ const Cart = {
 
     changeQuantity(productPath, color, delta) {
         const cart = this.get();
-        const itemIndex = cart.findIndex((item) => item.path === productPath && item.color === color);
+        const normalizedColor = getFinishOption(color).label;
+        const itemIndex = cart.findIndex((item) => (
+            item.path === productPath && getFinishOption(item.color).label === normalizedColor
+        ));
 
         if (itemIndex === -1) {
             return;
@@ -69,7 +82,11 @@ const Cart = {
     },
 
     has(productPath, color) {
-        return this.get().some((item) => item.path === productPath && (!color || item.color === color));
+        const normalizedColor = color ? getFinishOption(color).label : null;
+
+        return this.get().some((item) => (
+            item.path === productPath && (!normalizedColor || getFinishOption(item.color).label === normalizedColor)
+        ));
     },
 
     isCartPage() {
@@ -99,7 +116,7 @@ const Cart = {
         document.getElementById('colorModalProductPath').value = productPath;
 
         document.querySelectorAll('.color-choice').forEach((button) => button.classList.remove('selected'));
-        const defaultChoice = document.querySelector('.color-choice[data-color="Black"]');
+        const defaultChoice = document.querySelector(`.color-choice[data-color="${this.getDefaultColor()}"]`);
         if (defaultChoice) {
             defaultChoice.classList.add('selected');
         }
@@ -109,7 +126,7 @@ const Cart = {
 
     confirmColorSelection() {
         const productPath = document.getElementById('colorModalProductPath').value;
-        const selectedColor = document.querySelector('.color-choice.selected')?.getAttribute('data-color') || 'Black';
+        const selectedColor = document.querySelector('.color-choice.selected')?.getAttribute('data-color') || this.getDefaultColor();
 
         this.add(productPath, selectedColor);
 
@@ -145,7 +162,7 @@ const Cart = {
                 }
 
                 const qty = Math.max(1, Number(cartItem.qty) || 1);
-                const color = cartItem.color || 'Black';
+                const color = getFinishOption(cartItem.color).label;
                 const price = Number(product.price) || 404;
 
                 return {
@@ -154,7 +171,7 @@ const Cart = {
                     color,
                     price,
                     lineTotal: price * qty,
-                    imagePath: encodeURI(`${color}/${product.relativePath}`),
+                    imagePath: getProductImagePath(product.relativePath, color),
                     detailUrl: `product.html?path=${encodeURIComponent(product.relativePath)}`
                 };
             })
@@ -352,6 +369,20 @@ const Cart = {
             return;
         }
 
+        const colorChoicesHtml = productFinishes.map((finish) => {
+            const isSelected = finish.label === this.getDefaultColor() ? ' selected' : '';
+            const swatchMarkup = finish.swatchImage
+                ? `<img src="${finish.swatchImage}" alt="${finish.label}" style="width: 80px; height: 80px; object-fit: cover;" onerror="ImageFallback.handle(this)">`
+                : `<span class="finish-swatch finish-swatch-lg" style="background-color: ${finish.swatchColor};" aria-hidden="true"></span>`;
+
+            return `
+                <button class="color-choice${isSelected}" data-color="${finish.label}" onclick="document.querySelectorAll('.color-choice').forEach((button) => button.classList.remove('selected')); this.classList.add('selected');">
+                    ${swatchMarkup}
+                    <span class="finish-choice-label mt-2">${finish.label}</span>
+                </button>
+            `;
+        }).join('');
+
         const modalHtml = `
             <div class="modal fade" id="colorSelectionModal" tabindex="-1" aria-labelledby="colorSelectionModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -365,15 +396,7 @@ const Cart = {
                             <p class="mb-3 text-center" id="colorModalProductName" style="font-size: 1.1rem; font-weight: 500;">Product Name</p>
                             <p class="text-white text-center mb-4" style="font-size: 0.9rem;">Select your preferred finish:</p>
                             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                                <button class="color-choice selected" data-color="Black" onclick="document.querySelectorAll('.color-choice').forEach((button) => button.classList.remove('selected')); this.classList.add('selected');">
-                                    <img src="pics/black.webp" alt="Black" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" onerror="ImageFallback.handle(this)">
-                                </button>
-                                <button class="color-choice" data-color="Grey" onclick="document.querySelectorAll('.color-choice').forEach((button) => button.classList.remove('selected')); this.classList.add('selected');">
-                                    <img src="pics/grey.webp" alt="Grey" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" onerror="ImageFallback.handle(this)">
-                                </button>
-                                <button class="color-choice" data-color="White" onclick="document.querySelectorAll('.color-choice').forEach((button) => button.classList.remove('selected')); this.classList.add('selected');">
-                                    <img src="pics/white.webp" alt="White" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" onerror="ImageFallback.handle(this)">
-                                </button>
+                                ${colorChoicesHtml}
                             </div>
                         </div>
                         <div class="modal-footer border-secondary">

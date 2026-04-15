@@ -25,11 +25,22 @@
     transform: scale(1.2);
 }
 
-.color-option img {
+.color-option img,
+.color-option .finish-swatch {
     width: 100%;
     height: 100%;
     border-radius: 0;
     object-fit: cover;
+    display: block;
+}
+
+.finish-swatch {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.finish-swatch-lg {
+    width: 80px;
+    height: 80px;
 }
 
 .main-image-container {
@@ -309,7 +320,15 @@ h6,
     transform: scale(1.1);
 }
 
-.color-choice span {
+.color-choice img,
+.color-choice .finish-swatch-lg {
+    display: block;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.finish-choice-label {
     font-size: 0.9rem;
     color: #9b9b9b;
 }

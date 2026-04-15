@@ -105,21 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
         productGrid.innerHTML = '';
         
         items.forEach((item, index) => {
-            // Construct paths for 3 colors
-            const colors = ['Black', 'Grey', 'White'];
             // Create Carousel ID
             const carouselId = `carousel-${index}`;
             
             let carouselItemsHtml = '';
-            colors.forEach((color, i) => {
+            productFinishes.forEach((finish, i) => {
                 const activeClass = i === 0 ? 'active' : '';
-                // Encode spaces in path
-                const imagePath = `${color}/${item.relativePath}`;
-                const encodedPath = encodeURI(imagePath);
                 
                 carouselItemsHtml += `
                     <div class="carousel-item ${activeClass}" data-bs-interval="3000">
-                        <img src="${encodedPath}" class="d-block w-100" alt="${item.name}" loading="lazy" style="height: 300px; object-fit: contain;" onerror="ImageFallback.handle(this)">
+                        <img src="${getProductImagePath(item.relativePath, finish.label)}" class="d-block w-100" alt="${item.name}" loading="lazy" style="height: 300px; object-fit: contain;" onerror="ImageFallback.handle(this)">
                     </div>
                 `;
             });
