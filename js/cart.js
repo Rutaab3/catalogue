@@ -1,7 +1,7 @@
 const Cart = {
     key: 'shoppingCart',
     cartPage: 'cart.html',
-    phoneNumber: '923122853974',
+    phoneNumber: '447476748064',
     currencySymbol: '\u00A3',
 
     get() {
