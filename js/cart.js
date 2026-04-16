@@ -274,6 +274,7 @@ const Cart = {
                 const itemColor = this.escapeHtml(item.color);
                 const unitPrice = this.formatCurrency(item.price);
                 const lineTotal = this.formatCurrency(item.lineTotal);
+                const finishClass = `cart-finish-badge-${String(item.color).toLowerCase().replace(/\s+/g, '-')}`;
 
                 return `
                     <article class="cart-line-item">
@@ -281,17 +282,19 @@ const Cart = {
                             <img src="${item.imagePath}" alt="${productName}" onerror="ImageFallback.handle(this)">
                         </div>
                         <div class="cart-line-content">
-                            <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
-                                <div>
-                                    <p class="text-uppercase small text-muted mb-2">${this.escapeHtml(item.product.category)}</p>
-                                    <h3 class="cart-line-title mb-2">${productName}</h3>
-                                    <div class="d-flex align-items-center gap-3 flex-wrap">
-                                        <span class="cart-finish-badge">${itemColor}</span>
-                                        <a href="${item.detailUrl}" class="cart-inline-link">View details</a>
+                            <div class="cart-line-top">
+                                <div class="cart-line-copy">
+                                    <p class="cart-item-category">${this.escapeHtml(item.product.category)}</p>
+                                    <h3 class="cart-line-title">${productName}</h3>
+                                    <div class="cart-line-meta">
+                                        <span class="cart-finish-badge ${finishClass}">${itemColor}</span>
+                                        <button type="button" class="btn btn-link cart-remove-btn p-0" onclick="Cart.remove('${item.product.relativePath}', '${item.color}')">
+                                            Remove
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="text-lg-end">
-                                    <p class="text-uppercase small text-muted mb-2">Unit Price</p>
+                                <div class="cart-price-stack">
+                                    <p class="cart-item-label">Unit Price</p>
                                     <div class="cart-line-price">${unitPrice}</div>
                                 </div>
                             </div>
@@ -307,9 +310,6 @@ const Cart = {
                                 </div>
                                 <div class="cart-line-actions">
                                     <span class="cart-line-total">${lineTotal}</span>
-                                    <button type="button" class="btn btn-link cart-remove-btn" onclick="Cart.remove('${item.product.relativePath}', '${item.color}')">
-                                        Remove
-                                    </button>
                                 </div>
                             </div>
                         </div>

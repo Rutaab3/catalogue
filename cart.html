@@ -61,23 +61,22 @@
     </nav>
 
     <section class="cart-hero d-flex align-items-center text-white">
-        <div class="container py-5">
+        <div class="container cart-hero-shell py-5">
             <div class="cart-hero-copy">
-                <!-- <p class="text-uppercase small mb-3" style="letter-spacing: 0.2em;">Checkout</p> -->
                 <h1 class="display-3 fw-bold mb-3">Checkout</h1>
-                <p class="lead fs-4 mb-0">Adjust Quantities, Confirm Finishes and Checkout With Smile.</p>
+                <p class="lead fs-4 mb-0">Adjust Quantities. Choose Finishes and Checkout, With a Smile</p>
             </div>
         </div>
     </section>
 
     <main class="cart-page-shell py-5">
-        <div class="container py-lg-4">
-            <div class="row g-4 align-items-start">
+        <div class="container cart-page-wrap py-lg-4">
+            <div class="row g-4 g-xl-5 align-items-start">
                 <div class="col-lg-8">
-                    <section class="cart-sheet p-4 p-lg-5">
+                    <section class="cart-sheet cart-sheet-order p-4 p-lg-5">
                         <div class="d-flex justify-content-between align-items-center gap-3 mb-4 flex-wrap">
                             <div>
-                                <p class="text-uppercase small text-muted mb-2">Selected Furniture</p>
+                                <p class="text-uppercase small text-muted mb-2 cart-section-label">Selected Furniture</p>
                                 <h2 class="mb-0">Your Cart</h2>
                             </div>
                             <span class="cart-summary-pill" id="cartPageCount">0 items</span>
@@ -86,9 +85,9 @@
                     </section>
                 </div>
                 <div class="col-lg-4">
-                    <aside class="cart-summary-card p-4 p-lg-4 sticky-lg-top" style="top: 110px;">
-                        <p class="text-uppercase small text-muted mb-2">Order Summary</p>
-                        <h2 class="mb-4">Checkout</h2>
+                    <aside class="cart-summary-card cart-summary-panel p-4 p-lg-4 sticky-lg-top" style="top: 110px;">
+                        <p class="text-uppercase small text-muted mb-2 cart-section-label">Order Summary</p>
+                        <h2 class="mb-4 cart-summary-heading">Review Your Order</h2>
                         <div class="cart-summary-row">
                             <span>Items</span>
                             <span id="cartSummaryCount">0 items</span>
@@ -105,10 +104,10 @@
                             Your order opens in WhatsApp with all selected items, finishes, and quantities prefilled.
                         </p>
                         <div class="d-grid gap-3">
-                            <button id="cartCheckoutBtn" class="btn btn-light py-3 text-uppercase">
+                            <button id="cartCheckoutBtn" class="btn cart-summary-cta py-3 text-uppercase">
                                 <i class="bi bi-whatsapp me-2"></i>Checkout on WhatsApp
                             </button>
-                            <a href="index.html" class="btn btn-outline-light py-3 text-uppercase">Continue Shopping</a>
+                            <a href="index.html" class="btn cart-summary-secondary py-3 text-uppercase">Continue Shopping</a>
                         </div>
                     </aside>
                 </div>
