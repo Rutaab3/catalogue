@@ -300,37 +300,46 @@ h6,
 
 /* Color Choice Modal Styles */
 .color-choice {
-    background: #272424;
+    background: #111;
     border: 3px solid transparent;
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 118px;
 }
 
 .color-choice:hover {
     border-color: #9b9b9b;
-    transform: scale(1.05);
+    transform: translateY(-2px) scale(1.03);
 }
 
 .color-choice.selected {
-    border-color: #9b9b9b;
-    transform: scale(1.1);
+    border-color: #fff;
+    transform: translateY(-2px) scale(1.04);
 }
 
 .color-choice img,
 .color-choice .finish-swatch-lg {
     display: block;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
+}
+
+.finish-choice-preview {
+    width: 96px;
+    height: 118px;
+    object-fit: contain;
+    background: #f8f9fa;
+    padding: 0.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .finish-choice-label {
     font-size: 0.9rem;
-    color: #9b9b9b;
+    color: #f3f3f3;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 /* Cart Page */

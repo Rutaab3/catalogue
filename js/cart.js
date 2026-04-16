@@ -114,6 +114,7 @@ const Cart = {
 
         document.getElementById('colorModalProductName').innerText = productName;
         document.getElementById('colorModalProductPath').value = productPath;
+        this.updateColorModalChoices(productPath, productName);
 
         document.querySelectorAll('.color-choice').forEach((button) => button.classList.remove('selected'));
         const defaultChoice = document.querySelector(`.color-choice[data-color="${this.getDefaultColor()}"]`);
@@ -364,6 +365,23 @@ const Cart = {
         window.addEventListener('storage', () => this.updateUI());
     },
 
+    updateColorModalChoices(productPath, productName) {
+        document.querySelectorAll('.color-choice').forEach((button) => {
+            const finishLabel = getFinishOption(button.getAttribute('data-color')).label;
+            const preview = button.querySelector('.finish-choice-preview');
+
+            if (!preview) {
+                return;
+            }
+
+            ImageFallback.setSource(
+                preview,
+                getProductImagePath(productPath, finishLabel),
+                `${productName} - ${finishLabel}`
+            );
+        });
+    },
+
     injectColorModal() {
         if (document.getElementById('colorSelectionModal')) {
             return;
@@ -371,13 +389,10 @@ const Cart = {
 
         const colorChoicesHtml = productFinishes.map((finish) => {
             const isSelected = finish.label === this.getDefaultColor() ? ' selected' : '';
-            const swatchMarkup = finish.swatchImage
-                ? `<img src="${finish.swatchImage}" alt="${finish.label}" style="width: 80px; height: 80px; object-fit: cover;" onerror="ImageFallback.handle(this)">`
-                : `<span class="finish-swatch finish-swatch-lg" style="background-color: ${finish.swatchColor};" aria-hidden="true"></span>`;
 
             return `
                 <button class="color-choice${isSelected}" data-color="${finish.label}" onclick="document.querySelectorAll('.color-choice').forEach((button) => button.classList.remove('selected')); this.classList.add('selected');">
-                    ${swatchMarkup}
+                    <img class="finish-choice-preview" src="pics/fallback.webp" alt="${finish.label}" loading="lazy" onerror="ImageFallback.handle(this)">
                     <span class="finish-choice-label mt-2">${finish.label}</span>
                 </button>
             `;
