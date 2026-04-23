@@ -2,6 +2,8 @@
     const OWNER_ACTIVATION_CODE = 'iamtheboss';
     const BYPASS_STORAGE_KEY = 'hf-protection-bypass';
     const BYPASS_DURATION_MS = 12 * 60 * 60 * 1000;
+    const CONTENT_SHORTCUT_KEYS = new Set(['c', 'u', 's', 'p']);
+    const DEVTOOLS_SHORTCUT_KEYS = new Set(['i', 'j', 'c']);
 
     function getBypassState() {
         try {
@@ -53,11 +55,105 @@
         localStorage.removeItem(BYPASS_STORAGE_KEY);
     }
 
-    function shouldSkipProtection() {
-        const pagePath = window.location.pathname.toLowerCase();
-        const bodyFlag = document.body?.dataset?.protection;
+    function getProtectionMode() {
+        return document.body?.dataset?.protection || 'full';
+    }
 
-        return bodyFlag === 'off' || pagePath.endsWith('/gateway.html') || pagePath.endsWith('gateway.html');
+    function shouldSkipGuardProtection() {
+        return getProtectionMode() === 'off';
+    }
+
+    function shouldEnableWallProtection() {
+        return getProtectionMode() === 'full';
+    }
+
+    function getProtectionRedirectUrl() {
+        const customRedirect = document.body?.dataset?.protectionRedirect;
+        return new URL(customRedirect || '404.html', window.location.href).href;
+    }
+
+    function isCurrentProtectionPage(targetUrl) {
+        const currentUrl = new URL(window.location.href);
+        const resolvedTargetUrl = new URL(targetUrl, currentUrl.href);
+
+        return currentUrl.origin === resolvedTargetUrl.origin && currentUrl.pathname === resolvedTargetUrl.pathname;
+    }
+
+    function getProtectionRewriteHtml() {
+        return [
+            '<!DOCTYPE html>',
+            '<html lang="en">',
+            '<head>',
+            '<meta charset="UTF-8">',
+            '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+            '<title>Access Restricted</title>',
+            '<style>',
+            'body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #111; color: #fff; font-family: Georgia, serif; }',
+            '.lock-screen { max-width: 32rem; padding: 2rem; text-align: center; }',
+            '.lock-screen h1 { margin-bottom: 0.75rem; font-size: clamp(2rem, 4vw, 3rem); }',
+            '.lock-screen p { margin: 0; color: rgba(255,255,255,0.75); line-height: 1.6; }',
+            '</style>',
+            '</head>',
+            '<body>',
+            '<main class="lock-screen">',
+            '<h1>Developer tools are not allowed.</h1>',
+            '<p>Close developer tools and reload the page to continue browsing the HF-Furniture collection.</p>',
+            '</main>',
+            '</body>',
+            '</html>'
+        ].join('');
+    }
+
+    function initializeWallProtection() {
+        if (typeof window.DisableDevtool !== 'function') {
+            return;
+        }
+
+        const redirectUrl = getProtectionRedirectUrl();
+
+        const wallOptions = {
+            url: redirectUrl,
+            timeOutUrl: redirectUrl,
+            clearIntervalWhenDevOpenTrigger: true,
+            clearLog: true,
+            disableMenu: false,
+            disableSelect: false,
+            disableCopy: false,
+            disableCut: false,
+            disablePaste: false
+        };
+
+        if (isCurrentProtectionPage(redirectUrl)) {
+            delete wallOptions.url;
+            delete wallOptions.timeOutUrl;
+            wallOptions.rewriteHTML = getProtectionRewriteHtml();
+        }
+
+        window.DisableDevtool(wallOptions);
+    }
+
+    function isEditableTarget(target) {
+        if (!(target instanceof HTMLElement)) {
+            return false;
+        }
+
+        const tagName = target.tagName;
+        return tagName === 'INPUT' || tagName === 'TEXTAREA' || target.isContentEditable;
+    }
+
+    function getBlockedShortcutType(event) {
+        const key = String(event.key || '').toLowerCase();
+        const usesPrimaryModifier = event.ctrlKey || event.metaKey;
+
+        if (key === 'f12' || (usesPrimaryModifier && event.shiftKey && DEVTOOLS_SHORTCUT_KEYS.has(key))) {
+            return 'devtools';
+        }
+
+        if (usesPrimaryModifier && CONTENT_SHORTCUT_KEYS.has(key)) {
+            return 'content';
+        }
+
+        return null;
     }
 
     function showProtectionMessage() {
@@ -117,8 +213,12 @@
         }
     };
 
-    if (shouldSkipProtection() || isBypassActive()) {
+    if (shouldSkipGuardProtection() || isBypassActive()) {
         return;
+    }
+
+    if (shouldEnableWallProtection()) {
+        initializeWallProtection();
     }
 
     document.addEventListener('contextmenu', (e) => {
@@ -127,12 +227,37 @@
     });
 
     document.addEventListener('keydown', (e) => {
-        if (
-            (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'p')) ||
-            e.key === 'F12'
-        ) {
+        const shortcutType = getBlockedShortcutType(e);
+
+        if (!shortcutType) {
+            return;
+        }
+
+        if (shortcutType === 'content' && isEditableTarget(e.target)) {
+            return;
+        }
+
+        e.preventDefault();
+        showProtectionMessage();
+    });
+
+    ['copy', 'cut'].forEach((eventName) => {
+        document.addEventListener(eventName, (e) => {
+            if (isEditableTarget(e.target)) {
+                return;
+            }
+
             e.preventDefault();
             showProtectionMessage();
+        });
+    });
+
+    document.addEventListener('dragstart', (e) => {
+        if (!(e.target instanceof HTMLImageElement)) {
+            return;
         }
+
+        e.preventDefault();
+        showProtectionMessage();
     });
 })();

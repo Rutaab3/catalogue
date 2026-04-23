@@ -191,6 +191,102 @@ h6,
     color: #a51414;
 }
 
+.error-hero {
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.45)),
+        url('../pics/universal.webp'),
+        url('../pics/fallback.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.error-card {
+    max-width: 760px;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
+    color: #16110d;
+}
+
+.error-kicker {
+    color: #6d645b;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.error-message {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.05;
+}
+
+.error-copy {
+    max-width: 34rem;
+    margin: 0 auto;
+    color: #655e55;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 767.98px) {
+    .error-card {
+        padding: 2.25rem 1.5rem;
+    }
+}
+
+.error-hero {
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.45)),
+        url('../pics/universal.webp'),
+        url('../pics/fallback.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.error-card {
+    max-width: 760px;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
+    color: #16110d;
+}
+
+.error-kicker {
+    color: #6d645b;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.error-message {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.05;
+}
+
+.error-copy {
+    max-width: 34rem;
+    margin: 0 auto;
+    color: #655e55;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 767.98px) {
+    .error-card {
+        padding: 2.25rem 1.5rem;
+    }
+}
+
 /* Navbar Tweaks */
 .navbar-brand img {
     filter: brightness(0) invert(1);

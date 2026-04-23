@@ -13,7 +13,7 @@ A static showroom and catalogue site for HF-Furniture. The project includes a la
 - Cart page in `cart.html` with quantity controls, per-finish items, totals, and WhatsApp checkout
 - Finish selection modal that previews the actual wardrobe image in each finish
 - Shared image fallback handling through `js/image-fallback.js`
-- Optional client-side protection layer in `js/protect.js`
+- Local devtool shield through `js/wall.js` with an optional client-side protection layer in `js/protect.js`
 - Owner gateway in `gateway.html` to temporarily disable protection on the current browser
 - Responsive layout for desktop, tablet, and mobile
 
@@ -36,6 +36,7 @@ catalogue/
 |   |-- image-fallback.js
 |   |-- protect.js
 |   |-- transition.js
+|   |-- wall.js
 |-- pics/
 |   |-- logo.webp
 |   |-- logo2.webp
@@ -88,6 +89,7 @@ If you add a product, the same `relativePath` must exist inside every finish fol
 - `js/app.js`: catalogue rendering and filtering
 - `js/cart.js`: cart rendering, quantity logic, finish modal, and WhatsApp checkout
 - `js/description.js`: product descriptions
+- `js/wall.js`: local devtool-detection library used by protected pages
 - `js/protect.js`: client-side protection and owner bypass logic
 - `css/style.css`: site styling for all pages
 
@@ -127,7 +129,9 @@ Edit `js/cart.js`.
 
 ## Protection Notes
 
-`js/protect.js` can block some casual actions like right-click and common shortcut keys.
+`js/wall.js` redirects protected pages to `404.html` when developer tools are detected.
+
+`js/protect.js` handles the owner bypass flow and blocks casual actions like right-click, copy shortcuts, and image dragging.
 
 The owner bypass is activated through `gateway.html` and stored in the browser for a limited time.
 
