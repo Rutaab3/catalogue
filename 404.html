@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <script src="js/wall.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - HF-Furniture Collection</title>
@@ -15,7 +14,7 @@
     <script src="js/image-fallback.js"></script>
 </head>
 
-<body class="bg-light">
+<body class="bg-light" data-protection="guard">
 
     <!-- <div id="page-loader" class="page-loader">
         <div class="loader-content">
@@ -63,8 +62,8 @@
         <section class="error-hero d-flex align-items-center justify-content-center text-center text-white">
             <div class="container">
                 <div class="error-card mx-auto">
-                    <p class="error-kicker mb-3">Access Restricted</p>
-                    <h1 class="error-message fw-bold mb-3">Sorry, Developer Tools are not allowed on this site.</h1>
+                    <p class="error-kicker mb-3">Page Not Found</p>
+                    <h1 class="error-message fw-bold mb-3">Sorry, we could not find that page.</h1>
                     <p class="error-copy mb-4">Return to the catalogue to keep exploring the HF-Furniture collection.</p>
                     <a href="index.html" class="btn btn-dark btn-lg px-5 py-3">Go Back to Home</a>
                 </div>
@@ -109,6 +108,11 @@
 
         window.addEventListener('load', () => {
             const loader = document.getElementById('page-loader');
+
+            if (!loader) {
+                return;
+            }
+
             const elapsed = Date.now() - startTime;
             const minDisplayTime = 3000;
             const remainingTime = Math.max(0, minDisplayTime - elapsed);
