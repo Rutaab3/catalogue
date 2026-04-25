@@ -1,6 +1,6 @@
 # HF-Furniture Collection
 
-![Project Preview](pics/readme/readme.webp)
+ ![Project Preview](pics/readme/readme.webp)  
 
 A static showroom and catalogue site for HF-Furniture. The project includes a landing page, filtered catalogue, product detail pages, a cart flow with finish selection, and WhatsApp checkout.
 
