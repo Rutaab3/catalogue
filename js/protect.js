@@ -69,7 +69,7 @@
 
     function getProtectionRedirectUrl() {
         const customRedirect = document.body?.dataset?.protectionRedirect;
-        return new URL(customRedirect || '404.html', window.location.href).href;
+        return new URL(customRedirect || 'restricted.html', window.location.href).href;
     }
 
     function isCurrentProtectionPage(targetUrl) {

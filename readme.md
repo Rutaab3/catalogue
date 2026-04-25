@@ -129,7 +129,7 @@ Edit `js/cart.js`.
 
 ## Protection Notes
 
-`js/wall.js` redirects protected pages to `404.html` when developer tools are detected.
+`js/wall.js` redirects protected pages to `restricted.html` when developer tools are detected.
 
 `js/protect.js` handles the owner bypass flow and blocks casual actions like right-click, copy shortcuts, and image dragging.
 

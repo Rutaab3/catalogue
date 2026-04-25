@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Restricted - HF-Furniture Collection</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="pics/logo.webp">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="js/image-fallback.js"></script>
+</head>
+
+<body class="bg-light" data-protection="guard">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top mx-2">
+        <div class="container-fluid px-5 py-2 bg-dark">
+            <a class="navbar-brand" href="home.html">
+                <img src="pics/logo.webp" alt="HF-Furniture" height="50" onerror="ImageFallback.handle(this)">
+            </a>
+            <div class="d-flex align-items-center order-lg-last ms-3">
+                <button class="btn btn-link nav-link text-white position-relative text-decoration-none"
+                    onclick="Cart.show()" style="font-family: 'Playfair Display', serif;">
+                    <i class="bi bi-cart-fill"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-white cart-count"
+                        style="font-size: 0.6rem; color: black;">
+                        0
+                    </span>
+                </button>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Catalogue</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="error-hero d-flex align-items-center justify-content-center text-center text-white">
+            <div class="container">
+                <div class="error-card mx-auto">
+                    <p class="error-kicker mb-3">Access Restricted</p>
+                    <h1 class="error-message fw-bold mb-3">Developer tools are not allowed on this Site.</h1>
+                    <p class="error-copy mb-4">Close developer tools and return to the catalogue to continue browsing the HF-Furniture collection.</p>
+                    <a href="index.html" class="btn btn-dark btn-lg px-5 py-3">Return to Catalogue</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-4 text-light bg-dark border-top">
+        <div class="container">
+            <div class="mb-3">
+                <a href="https://www.facebook.com/hf.furniture.co.uk" target="_blank"
+                    class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-facebook fs-5"></i>
+                </a>
+                <a href="https://www.instagram.com/hf.furniture.ltd/" target="_blank"
+                    class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-instagram fs-5"></i>
+                </a>
+                <a href="https://uk.pinterest.com/hffurniturescouk/" target="_blank"
+                    class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-pinterest fs-5"></i>
+                </a>
+                <a href="https://wa.me/447476748064" target="_blank" class="text-light me-3 text-decoration-none">
+                    <i class="bi bi-whatsapp fs-5"></i>
+                </a>
+                <a href="https://wa.me/447846689490" target="_blank" class="text-light text-decoration-none">
+                    <i class="bi bi-whatsapp fs-5"></i>
+                </a>
+            </div>
+            <p class="mb-0">&copy; 2025 HF-Furniture Collection.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/protect.js"></script>
+</body>
+
+</html>
